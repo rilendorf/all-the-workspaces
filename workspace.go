@@ -26,7 +26,7 @@ func main() {
 			panicErr("GetConfig", err)
 
 			cfg.Layer = 0
-			cfg.Workspace = 0
+			cfg.Workspace = 1
 
 			panicErr("SetConfig", SetConfig(cfg))
 
@@ -85,6 +85,7 @@ func update(cfg *Config) {
 	cmd := exec.Command("i3-msg", "workspace",
 		fmt.Sprintf("%d", cfg.Workspace+(cfg.MaxLayer*cfg.Layer)),
 	)
+
 	panicErr("exec.Run", cmd.Run())
 }
 
@@ -92,5 +93,6 @@ func move(cfg *Config) {
 	cmd := exec.Command("i3-msg", "move", "container", "to", "workspace", "number",
 		fmt.Sprintf("%d", cfg.Workspace+(cfg.MaxLayer*cfg.Layer)),
 	)
+
 	panicErr("exec.Run", cmd.Run())
 }
