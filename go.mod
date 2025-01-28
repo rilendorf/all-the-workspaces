@@ -1,3 +1,3 @@
-module github.com/derzombiiie/atws
+module github.com/rilendorf/atws
 
 go 1.20
